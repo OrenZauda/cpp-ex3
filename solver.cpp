@@ -414,12 +414,12 @@ namespace solver {
         return x;
     }
 }
-int main(){
-    using namespace std;
-    using solver::solve; 
-    using solver::RealVariable ;
-    using solver::ComplexVariable;
-    ComplexVariable x;
-    solve((x^2)+(2*x)==-20);
-    return 0;
-}
+//int main(){
+ //   using namespace std;
+ //   using solver::solve; 
+  //  using solver::RealVariable ;
+  //  using solver::ComplexVariable;
+ //   ComplexVariable x;
+  //  solve((x^2)+(2*x)==-20);
+  //  return 0;
+//}
