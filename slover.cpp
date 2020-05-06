@@ -1,7 +1,6 @@
 
 using namespace std;
 #include <iostream>
-#include <stdexcept>
 #include <complex>
 #include "solver.hpp"
 #include <cmath>
