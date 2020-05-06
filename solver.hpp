@@ -23,13 +23,6 @@ namespace solver
         b.maala = a.maala;
         b.co1 = 1;
         b.co2 = 0;
-
-        cout<<"^^^^^^^^^^^^^what is a"<<endl;
-
-        cout<<a.co1<<endl;
-         cout<<a.co2<<endl;
-        cout<<a.co3<<endl;
-         cout<<a.maala<<endl;
         return b;
         };
         friend const RealVariable operator / ( const RealVariable a , const RealVariable b );
