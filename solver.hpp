@@ -19,7 +19,19 @@ namespace solver
         friend  RealVariable operator + ( const RealVariable a , const RealVariable b );
         friend  RealVariable operator - ( const RealVariable a , const  RealVariable b );
         friend  RealVariable operator * ( const RealVariable a , const RealVariable b );
-        friend const RealVariable operator ^ ( const RealVariable a , const RealVariable b );
+        friend const RealVariable operator ^ (  RealVariable b , const RealVariable a ){
+        b.maala = a.maala;
+        b.co1 = 1;
+        b.co2 = 0;
+
+        cout<<"^^^^^^^^^^^^^what is a"<<endl;
+
+        cout<<a.co1<<endl;
+         cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+         cout<<a.maala<<endl;
+        return b;
+        };
         friend const RealVariable operator / ( const RealVariable a , const RealVariable b );
         friend RealVariable operator + (int a , solver::RealVariable b );
         friend RealVariable operator * ( const int a , solver::RealVariable& b );
@@ -45,10 +57,10 @@ namespace solver
         double co3;
         double maala;
         double im;
-        ComplexVariable(double c1 =0,double c2 = 1,double c3 = 0, double m = 1,double _im =0):co1(c1),co2(c2),co3(c3),
+        ComplexVariable(double c1 =0,double c2 = 0,double c3 = 0, double m = 1,double _im =0):co1(c1),co2(c2),co3(c3),
         maala(m),im(_im){}        
-        ComplexVariable(int re) : co2(re), im(0) {};
-        ComplexVariable(complex<double> y): co2(y.real()),im(y.imag()){};
+        ComplexVariable(int re) :co1(0), co2(re),co3(0),maala(1), im(re) {};
+        ComplexVariable(complex<double> y): co1(0),co2(0),co3(y.real()),maala(1),im(y.imag()){};
         friend ComplexVariable operator == (ComplexVariable a , ComplexVariable b);
         friend const ComplexVariable operator + ( const ComplexVariable a , const ComplexVariable b );
         friend const ComplexVariable operator - ( const ComplexVariable a , const  ComplexVariable b );
