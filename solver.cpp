@@ -99,11 +99,16 @@ cout<<"=====after correction=== r r"<<endl;
     return a;
     };
     RealVariable operator-( RealVariable a,  int b) {
+        cout<<"----------------r"<<endl;
         a.co3-=b;
-        
+         cout<<"afterr"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
 
     return a;
     };
+   
         const RealVariable operator- (RealVariable const &a,  int const &b) {
         cout<<"--------------- r d"<<endl;
         cout<<a.co1<<endl;
@@ -251,24 +256,26 @@ cout<<"=====after correction=== r r"<<endl;
     }
 
 //*****************************
-
+ ComplexVariable operator==(ComplexVariable a, int b) {
+     cout<<"========"<<endl;
+     a.co3-=b;
+     cout<<a.co1<<endl;
+     cout<<a.co2<<endl;
+     cout<<a.co3<<endl;
+    return a;
+ }
     ComplexVariable operator==(ComplexVariable a, ComplexVariable b) {
-        
+        a.co1-=b.co1;
+        a.co2-=b.co2;
+        a.co3-=b.co3;
         cout<<"==========a"<<endl;
         cout<<a.co1<<endl;
         cout<<a.co2<<endl;
         cout<<a.co3<<endl;
-        cout<<"imm"<<a.im<<endl;
-        cout<<a.maala<<endl;
 
-        cout<<"bbbbbbbbbbbbbbbb?"<<endl;
-        cout<<b.co1<<endl;
-        cout<<b.co2<<endl;
-        cout<<b.co3<<endl;
-        cout<<"imm"<<b.im<<endl;
-        cout<<b.maala<<endl;
+        if(a.co1==0){a.maala =1;}
+        if(a.co2==0&&a.co1==0){a.maala =0;}
 
-        a.co3-=b.co2;
         return a;
     };
 
@@ -276,42 +283,49 @@ cout<<"=====after correction=== r r"<<endl;
     const ComplexVariable operator+( ComplexVariable a, const ComplexVariable b) {
         
 
-        cout<<"++++++++++++++++a"<<endl;
-        cout<<a.co1<<endl;
-        cout<<a.co2<<endl;
-        cout<<a.co3<<endl;
-        cout<<a.maala<<endl;
-        cout<<"b"<<endl<<endl;
-
-        cout<<b.co1<<endl;
-        cout<<b.co2<<endl;
-        cout<<b.co3<<endl;
-        cout<<b.maala<<endl;
-
-        cout<<a.im<<endl;
-        a.im = b.im;
+        cout<<"+++++++++++++++after"<<endl;
+        
         a.co1+=b.co1;
         a.co2+=b.co2;
         a.co3+=b.co3;
-        cout<<"add"<<endl<<endl;;
         cout<<a.co1<<endl;
         cout<<a.co2<<endl;
         cout<<a.co3<<endl;
-        cout<<a.maala<<endl;
         return a;
     }
+        const ComplexVariable operator+( ComplexVariable a,  int b) {
+                cout<<"+++int+++++++++++++"<<endl;
+                a.co3+=b;
+                cout<<a.co1<<endl;
+                cout<<a.co2<<endl;
+                cout<<a.co3<<endl;
+                
+            return a;
+        }
+       
+
+
 
     const ComplexVariable operator-( ComplexVariable a, const ComplexVariable b) {
-       a.im=b.im;
+       a.co1-=b.co1;
+       a.co2-=b.co2;
+       a.co3-=b.co3;
+
        cout<<"-------------------"<<endl;
         cout<<a.co1<<endl;
         cout<<a.co2<<endl;
         cout<<a.co3<<endl;
-        cout<<a.maala<<endl;
-        cout<<a.im<<endl;
         return a;
     };
 
+const ComplexVariable operator-( ComplexVariable a,  int b) {
+       a.co3-=b;
+       cout<<"-------------------"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+        return a;
+    };
     const ComplexVariable operator*(const ComplexVariable a, const ComplexVariable b) {
         ComplexVariable z;
         return z;
@@ -323,10 +337,7 @@ cout<<"=====after correction=== r r"<<endl;
 
     }
 
-    ComplexVariable operator+(int a, ComplexVariable b) {
-        ComplexVariable z;
-        return z;
-    };
+    
 
     ComplexVariable operator-(int a, ComplexVariable b) {
         ComplexVariable z;
@@ -358,11 +369,29 @@ cout<<"=====after correction=== r r"<<endl;
     ComplexVariable operator/(int a, ComplexVariable b) {
         return a;
     }
+    ComplexVariable operator/( ComplexVariable b,int a) {
+        if(a==0){
+            throw "divide by 0";
+        }
+        b.co1/=a;
+        b.co2/=a;
+        cout<<"////////////"<<endl;
+        cout<<b.co1<<endl;
+        cout<<b.co2<<endl;
+        cout<<b.co3<<endl;
+
+        return b;
+    }
 
 
     ComplexVariable operator+(double a, ComplexVariable b) {
-        ComplexVariable z(b.co2 + a, b.co2);
-        return z;
+        b.co3+=a;
+        cout<<"+++++++++"<<endl;
+        cout<<b.co1<<endl;
+        cout<<b.co2<<endl;
+        cout<<b.co3<<endl;
+
+        return b;
     };
 
     ComplexVariable operator-(double a, ComplexVariable b) {
@@ -378,8 +407,12 @@ cout<<"=====after correction=== r r"<<endl;
 
     ComplexVariable operator^(ComplexVariable b,double a ) {
         cout<<"^^^^^^^^^^^^^^^^^^^^"<<endl;
+        if(b.maala==1){
+            b.co2=0;
+        }
          b.maala =a;
-        cout<<"a is  "<<a<<endl;
+
+        cout<<"a is  "<<a<<endl<<endl;
         if(a==0){
            throw "this is wrong";
         }
@@ -390,7 +423,6 @@ cout<<"=====after correction=== r r"<<endl;
         cout<<b.co1<<endl;
         cout<<b.co2<<endl;
         cout<<b.co3<<endl;
-        cout<<b.maala<<endl<<endl<<endl;
 
         return b;
     }
@@ -478,8 +510,11 @@ cout<<"=====after correction=== r r"<<endl;
         double delta =y.co2*y.co2-4*y.co1*y.co3;
         cout<<"delta "<<delta<<endl;
         
-        
+        if(y.maala==0){
+            throw "bad insert";
+        }
         if (y.maala==1){
+
             double real = y.co3/(-y.co2);
             double img= -y.im/y.co2;
             std::complex <double> t(real,img);
@@ -493,8 +528,12 @@ cout<<"=====after correction=== r r"<<endl;
 
         if(y.maala==2){
             if(delta>=0){
+                
                 double ans = (y.co2+sqrt(delta))/(2*y.co1);
-                return x;
+                cout<<"ans "<<ans<<endl;
+                std::complex <double> answ(ans,0);
+                return answ;
+
             }
             delta=-delta;
             double rr = sqrt(delta);
