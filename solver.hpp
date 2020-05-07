@@ -37,6 +37,8 @@ namespace solver
         return b;
         };
         friend const RealVariable operator / ( const RealVariable a , const RealVariable b );
+        friend const RealVariable operator / (  RealVariable a ,  int b );
+
         friend RealVariable operator + (int a , solver::RealVariable b );
         friend RealVariable operator * ( const int a , solver::RealVariable b );
         friend RealVariable operator - ( int a , RealVariable b );
