@@ -7,9 +7,19 @@
 namespace solver {
 
     RealVariable operator==( RealVariable a, const RealVariable b) {
-        a.co3=a.co3-b.co1;
 
-        cout<<"======== r r"<<endl;
+        cout<<"=====aa=== r r"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+        cout<<a.maala<<endl;
+        cout<<"=====b=== r r"<<endl;
+        cout<<b.co1<<endl;
+        cout<<b.co2<<endl;
+        cout<<b.co3<<endl;
+        cout<<b.maala<<endl;
+        a.co3=a.co3-b.co1;
+cout<<"=====after correction=== r r"<<endl;
         cout<<a.co1<<endl;
         cout<<a.co2<<endl;
         cout<<a.co3<<endl;
@@ -95,7 +105,8 @@ namespace solver {
     }
 
 
-    RealVariable operator*(const int a, RealVariable &b) {
+    RealVariable operator*(const int a, RealVariable b) {
+        
         cout<<"***********"<<endl;
         if(b.maala==2){
         b.co1=1;
@@ -321,37 +332,52 @@ namespace solver {
         return (os);
     }
 
-    double solve(RealVariable a) {
+    double solve( RealVariable a) {
+        
+        RealVariable z(a.co1,a.co2,a.co3,a.maala);
+       
         cout<<"########solve##########"<<endl;
-        cout<<a.co1<<endl;
-        cout<<a.co2<<endl;
-        cout<<a.co3<<endl;
-        cout<<a.maala<<endl;
+        cout<<z.co1<<endl;
+        cout<<z.co2<<endl;
+        cout<<z.co3<<endl;
+        cout<<z.maala<<endl;
 
-        if (a.maala ==2){
+        if (z.maala ==2){
+
             cout<<"maala ==2"<<endl;
-            double delta =a.co2*a.co2-(4*a.co1*a.co3);
+            double delta =z.co2*z.co2-(4*z.co1*z.co3);
             cout<<"delta "<<delta<<endl;
-            try{
-                if(delta<0||a.co1==0){
+            
+                if(delta<0||z.co1==0){
                     
                     throw "there is no solution";
                      
                     }
-            }
-            catch(const char* a){
-                cout<<a<<endl;
-            }
-                
+            
+            
 
             
-        double x = (-a.co2+sqrt(delta))/(2*a.co1);
+        double x = (-z.co2+sqrt(delta))/(2*z.co1);
             cout<<"answer "<<x<<endl;
+        a.co1=0;
+        a.co2=1;
+        a.co3=0;
+        a.maala=1;
             return x;
         }
+        cout<<"#########aaa#########"<<endl;
+        a.co1=0;
+        a.co2=1;
+        a.co3=0;
+        a.maala=1;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+        cout<<a.maala<<endl;
         
-        double answer = a.co3/(-a.co2);
+        double answer = z.co3/(-z.co2);
         cout<<"answer "<<answer<<endl;
+        
         return answer;
         
        
