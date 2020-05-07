@@ -175,7 +175,9 @@ cout<<"=====after correction=== r r"<<endl;
         b.co1=1;
         }
         
-        b.co2 = a;
+        b.co2 *= a;
+        b.co1 *= a;
+
         cout<<b.co1<<endl;
         cout<<b.co2<<endl;
         cout<<b.co3<<endl;
@@ -445,7 +447,7 @@ cout<<"=====after correction=== r r"<<endl;
         a.maala=1;
             return x;
         }
-        if(a.co3==0||(a.co2==0&&a.co1==0)){
+        if((a.co2==0&&a.co1==0)){
             throw "wrong assignment";
         }
         cout<<"#########aaa#########"<<endl;
