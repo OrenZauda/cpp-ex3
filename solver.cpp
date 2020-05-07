@@ -303,14 +303,19 @@ cout<<"=====after correction=== r r"<<endl;
 
     ComplexVariable operator^(ComplexVariable b,double a ) {
         cout<<"^^^^^^^^^^^^^^^^^^^^"<<endl;
-        b.maala =a;
+         b.maala =a;
+        cout<<"a is  "<<a<<endl;
+        if(a==0){
+           throw "this is wrong";
+        }
+       
         if (a==2){
             b.co1=1;
         }
         cout<<b.co1<<endl;
         cout<<b.co2<<endl;
         cout<<b.co3<<endl;
-        cout<<b.maala<<endl;
+        cout<<b.maala<<endl<<endl<<endl;
 
         return b;
     }
