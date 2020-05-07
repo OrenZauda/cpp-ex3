@@ -55,7 +55,7 @@ namespace solver
         double co3;
         double maala;
         double im;
-        ComplexVariable(double c1 =0,double c2 = 0,double c3 = 0, double m = 1,double _im =0):co1(c1),co2(c2),co3(c3),
+        ComplexVariable(double c1 =0,double c2 =1,double c3 = 0, double m = 1,double _im =0):co1(c1),co2(c2),co3(c3),
         maala(m),im(_im){}        
         ComplexVariable(int re) :co1(0), co2(re),co3(0),maala(1), im(re) {};
         ComplexVariable(complex<double> y): co1(0),co2(0),co3(y.real()),maala(1),im(y.imag()){};
