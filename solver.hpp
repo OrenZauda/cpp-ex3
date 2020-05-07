@@ -68,11 +68,19 @@ namespace solver
         ComplexVariable(int re) :co1(0), co2(re),co3(0),maala(1), im(re) {};
         ComplexVariable(complex<double> y): co1(0),co2(0),co3(y.real()),maala(1),im(y.imag()){};
         friend ComplexVariable operator == (ComplexVariable a , ComplexVariable b);
+        friend ComplexVariable operator == (ComplexVariable a , int b);
+
         friend const ComplexVariable operator + ( const ComplexVariable a , const ComplexVariable b );
+                friend const ComplexVariable operator + ( const ComplexVariable a , int b );
+
         friend const ComplexVariable operator - ( const ComplexVariable a , const  ComplexVariable b );
+        friend const ComplexVariable operator - ( const ComplexVariable a ,   int b );
+
+
+
         friend const ComplexVariable operator * ( const ComplexVariable a ,const ComplexVariable b );
         friend const ComplexVariable operator / (  const ComplexVariable a , const ComplexVariable b );
-        friend ComplexVariable operator + (int a , ComplexVariable b );
+      //  friend ComplexVariable operator + (int a , ComplexVariable b );
         friend ComplexVariable operator * ( int a , ComplexVariable b );
         friend ComplexVariable operator - ( int a , ComplexVariable b );
         friend ComplexVariable operator ^ (ComplexVariable a , ComplexVariable b );
@@ -83,6 +91,7 @@ namespace solver
         friend ComplexVariable operator - ( double a , ComplexVariable b );
         friend ComplexVariable operator^(ComplexVariable b,double a );
         friend ComplexVariable operator / ( double a ,  ComplexVariable b );
+        friend ComplexVariable operator / ( ComplexVariable a ,  int b );
 
         friend ostream& operator<< (ostream& os, const ComplexVariable& c);
         friend ostream& operator<< (ostream& os, const std::complex<double>& c);
