@@ -86,12 +86,11 @@ cout<<"=====after correction=== r r"<<endl;
         return b;
     }
     RealVariable operator-( RealVariable a,const  RealVariable b) {
-        a.co3-=b.co1;
-        cout<<"---------b?------- r r"<<endl;
-        cout<<a.co1<<endl;
-        cout<<a.co2<<endl;
-        cout<<a.co3<<endl;
-        cout<<a.maala<<endl;
+        cout<<"---------------- r r"<<endl;
+        a.co1-=b.co1;
+        a.co2-=b.co2;
+        a.co3-=b.co3;
+
 
     return a;
     };
@@ -120,11 +119,39 @@ cout<<"=====after correction=== r r"<<endl;
         return a;
 
     }
+    const RealVariable operator/( RealVariable a,  int b) {
+        cout<<"//////////////////////"<<endl;
+        cout<<"before"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+
+        if(a.co2!=0){
+            a.co2=a.co2/b;
+        }
+         if(a.co1!=0){
+            a.co1=a.co1/b;
+        }
+         cout<<"after"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+        return a;
+
+    }
 
     RealVariable operator+(int b, RealVariable a) {
         cout<<"++++++++++++++++++"<<endl;
-        
-       
+        cout<<"b is "<<b<<endl;
+        cout<<"before"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+        a.co3+=b;
+        cout<<"after"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
 
         return a;
     };
@@ -181,7 +208,12 @@ cout<<"=====after correction=== r r"<<endl;
     }
 
     RealVariable operator*(double a, RealVariable b) {
-        cout<<"****************a"<<endl;
+        cout<<"****************"<<endl;
+        cout<<"a is "<<a<<endl;
+        cout<<"b.co1 is "<<b.co1<<endl;
+        cout<<"b.co2 is "<<b.co2<<endl;
+        cout<<"b.co3 is "<<b.co3<<endl;
+
         if(b.maala==1){
             b.co2=1;
             b.co2*=a;
@@ -189,6 +221,11 @@ cout<<"=====after correction=== r r"<<endl;
         if(b.maala==2){
             b.co2*=a;
         }
+         cout<<"after"<<b.co1<<endl;
+
+         cout<<"b.co1 is "<<b.co1<<endl;
+        cout<<"b.co2 is "<<b.co2<<endl;
+        cout<<"b.co3 is "<<b.co3<<endl;
         return b;
     }
 
