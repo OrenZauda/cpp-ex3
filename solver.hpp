@@ -18,8 +18,14 @@ namespace solver
         }
 
         friend RealVariable operator == (RealVariable a , RealVariable b);
+        friend RealVariable operator == (RealVariable a , int b);
+
         friend  RealVariable operator + ( const RealVariable a , const RealVariable b );
+        friend  RealVariable operator + (  RealVariable a ,  int b );
+
         friend  RealVariable operator - ( const RealVariable a , const  RealVariable b );
+         friend  RealVariable operator - (  RealVariable a ,   int b );
+
         friend  RealVariable operator * ( const RealVariable a , const RealVariable b );
         friend const RealVariable operator ^ (  RealVariable b , const RealVariable a ){
         b.maala = a.maala;
