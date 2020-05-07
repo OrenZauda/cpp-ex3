@@ -1,5 +1,4 @@
 
-using namespace std;
 #include <iostream>
 #include <complex>
 #include "solver.hpp"
@@ -7,31 +6,31 @@ using namespace std;
 #include <bits/exception.h>
 namespace solver {
 
-    RealVariable operator==(const RealVariable a, const RealVariable b) {
-        RealVariable t(a.co1,a.co2,a.co3,a.maala);
-        t.co3=a.co3-b.co1;
+    RealVariable operator==( RealVariable a, const RealVariable b) {
+        a.co3=a.co3-b.co1;
+
         cout<<"======== r r"<<endl;
-        cout<<t.co1<<endl;
-        cout<<t.co2<<endl;
-        cout<<t.co3<<endl;
-        cout<<t.maala<<endl;
-        return t;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+        cout<<a.maala<<endl;
+        return a;
     };
   
 
-    RealVariable operator+( RealVariable b, const RealVariable a) {
+    RealVariable operator+( RealVariable b,  RealVariable a) {
         cout<<"+++++++++++++++++a,second is "<<endl;
         cout<<a.co1<<endl;
         cout<<a.co2<<endl;
         cout<<a.co3<<endl;
         cout<<endl;
         cout<<"b is"<<endl;
-        b.co3+=a.co3;
-        b.co2+=a.co2;
-        b.co1+=a.co1;
         cout<<b.co1<<endl;
         cout<<b.co2<<endl;
         cout<<b.co3<<endl;
+
+        b.co3+=a.co1;
+
         return b;
     }
     RealVariable operator+( RealVariable b, double a) {
@@ -39,7 +38,7 @@ namespace solver {
         return b;
     }
     RealVariable operator+( RealVariable b, int a) {
-        cout<<"++++++++++++"<<endl<<endl;
+        cout<<"++++++++++++     R INT"<<endl<<endl;
         b.co3+=a;
         cout<<b.co1<<endl;
         cout<<b.co2<<endl;
@@ -52,19 +51,17 @@ namespace solver {
         b.co3+=a;
         return b;
     }
-    RealVariable operator-(const RealVariable a,const  RealVariable b) {
-        RealVariable t(a.co1,a.co2,a.co3,a.maala);
+    RealVariable operator-( RealVariable a,const  RealVariable b) {
+        a.co3-=b.co1;
+        cout<<"---------b?------- r r"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+        cout<<a.maala<<endl;
 
-       t.co3=a.co3-b.co1;
-        cout<<"---------------- r r"<<endl;
-        cout<<t.co1<<endl;
-        cout<<t.co2<<endl;
-        cout<<t.co3<<endl;
-        cout<<t.maala<<endl;
     return a;
     };
-        RealVariable operator-(RealVariable a, int b) {
-        a.co3 = a.co3- b;
+        const RealVariable operator- (RealVariable const &a,  int const &b) {
         cout<<"--------------- r d"<<endl;
         cout<<a.co1<<endl;
         cout<<a.co2<<endl;
@@ -73,14 +70,13 @@ namespace solver {
         return a;
     }
 
-    RealVariable operator*(const RealVariable a, const RealVariable b) {
-        RealVariable t(a.co1,a.co2,a.co3,a.maala);
-        t.co2 = b.co1;
-        return t;
+    RealVariable operator*( RealVariable a,  RealVariable b) {
+        
+        return a;
     }
-    const RealVariable operator/(const RealVariable a, const RealVariable b) {
-        RealVariable t(a.co1,a.co2,a.co3,a.maala);
-        t.co3= t.co3/b.co1;
+    const RealVariable operator/( RealVariable a, const RealVariable b) {
+        cout<<"/////////bb?/////////////"<<endl;
+        a.co2=a.co2/b.co1;
         return a;
 
     }
@@ -88,26 +84,20 @@ namespace solver {
     RealVariable operator+(int b, RealVariable a) {
         cout<<"++++++++++++++++++"<<endl;
         
-        RealVariable t(a.co1,a.co2,a.co3,a.maala);
-        t.co3= t.co3+b;
-        cout<<t.co1<<endl;
-        cout<<t.co2<<endl;
-        cout<<t.co3<<endl;
-        cout<<t.maala<<endl;
+       
 
-        return t;
+        return a;
     };
 
     RealVariable operator-(int b, RealVariable a) {
-        RealVariable t(a.co1,a.co2,a.co3,a.maala);
-        t.co3-=b;
-        return t;
+        
+        return a;
     }
 
 
     RealVariable operator*(const int a, RealVariable &b) {
         cout<<"***********"<<endl;
-        if(b.maala==1){
+        if(b.maala==2){
         b.co1=1;
         }
         
@@ -136,9 +126,8 @@ namespace solver {
     
 
     RealVariable operator/(int b, const RealVariable a) {
-        RealVariable t(a.co1,a.co2,a.co3,a.maala);
-        t.co3=t.co3-b;
-        return t;
+       
+        return a;
 
     }
     
@@ -360,16 +349,15 @@ namespace solver {
             cout<<"answer "<<x<<endl;
             return x;
         }
-        double delta =a.co2*a.co2*-a.co1*a.co3;
-        if (a.co1==1){
-            double answer = a.co3/(-a.co2);
-            cout<<"answer "<<answer<<endl;
-            return answer;
-        }
+        
+        double answer = a.co3/(-a.co2);
+        cout<<"answer "<<answer<<endl;
+        return answer;
+        
        
        
    
-        return 4;
+        
     }
 
     std::complex<double> solve(ComplexVariable y) {
@@ -414,12 +402,12 @@ namespace solver {
         return x;
     }
 }
-//int main(){
- //   using namespace std;
- //   using solver::solve; 
-  //  using solver::RealVariable ;
-  //  using solver::ComplexVariable;
- //   ComplexVariable x;
-  //  solve((x^2)+(2*x)==-20);
-  //  return 0;
-//}
+// int main(){
+//     using namespace std;
+//     using solver::solve; 
+//     using solver::RealVariable ;
+//     using solver::ComplexVariable;
+//     ComplexVariable x;
+//     solve((x^2)+(2*x)==-20);
+//     return 0;
+// }
