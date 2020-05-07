@@ -18,7 +18,10 @@ namespace solver {
         cout<<b.co2<<endl;
         cout<<b.co3<<endl;
         cout<<b.maala<<endl;
-        a.co3=a.co3-b.co1;
+        a.co1-=b.co1;
+        a.co2-=b.co2;
+        a.co3-=b.co3;
+
 cout<<"=====after correction=== r r"<<endl;
         cout<<a.co1<<endl;
         cout<<a.co2<<endl;
@@ -26,7 +29,19 @@ cout<<"=====after correction=== r r"<<endl;
         cout<<a.maala<<endl;
         return a;
     };
-  
+    RealVariable operator== (RealVariable a,  int b) {
+        cout<<"============="<<endl;
+        cout<<"before"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+        a.co3-=b;
+         cout<<"after"<<endl;
+        cout<<a.co1<<endl;
+        cout<<a.co2<<endl;
+        cout<<a.co3<<endl;
+        return a;
+    }
 
     RealVariable operator+( RealVariable b,  RealVariable a) {
         cout<<"+++++++++++++++++a,second is "<<endl;
@@ -39,7 +54,24 @@ cout<<"=====after correction=== r r"<<endl;
         cout<<b.co2<<endl;
         cout<<b.co3<<endl;
 
-        b.co3+=a.co1;
+        b.co1+=a.co1;
+        b.co2+=a.co2;
+        b.co3+=a.co3;
+        b.maala = max(b.maala,a.maala);
+        return b;
+    }
+    RealVariable operator+( RealVariable b,  int a) {
+        cout<<"++++++++++++int!!"<<endl;
+        cout<<"before"<<endl;
+        cout<<b.co1<<endl;
+        cout<<b.co2<<endl;
+        cout<<b.co3<<endl;
+
+        b.co3+=a;
+        cout<<"after"<<endl;
+        cout<<b.co1<<endl;
+        cout<<b.co2<<endl;
+        cout<<b.co3<<endl;
 
         return b;
     }
@@ -47,15 +79,7 @@ cout<<"=====after correction=== r r"<<endl;
         b.co3+=a;
         return b;
     }
-    RealVariable operator+( RealVariable b, int a) {
-        cout<<"++++++++++++     R INT"<<endl<<endl;
-        b.co3+=a;
-        cout<<b.co1<<endl;
-        cout<<b.co2<<endl;
-        cout<<b.co3<<endl;
-
-        return b;
-    }
+    
     
     RealVariable operator+( double a, RealVariable b) {
         b.co3+=a;
@@ -68,6 +92,12 @@ cout<<"=====after correction=== r r"<<endl;
         cout<<a.co2<<endl;
         cout<<a.co3<<endl;
         cout<<a.maala<<endl;
+
+    return a;
+    };
+    RealVariable operator-( RealVariable a,  int b) {
+        a.co3-=b;
+        
 
     return a;
     };
