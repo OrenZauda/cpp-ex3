@@ -13,7 +13,9 @@ namespace solver
         double co3;
         double maala;
         RealVariable(double c1 =0,double c2 = 1,double c3 = 0, double m = 1 ):co1(c1),co2(c2),co3(c3),
-        maala(m){}
+        maala(m){
+            
+        }
 
         friend RealVariable operator == (RealVariable a , RealVariable b);
         friend  RealVariable operator + ( const RealVariable a , const RealVariable b );
@@ -23,11 +25,14 @@ namespace solver
         b.maala = a.maala;
         b.co1 = 1;
         b.co2 = 0;
+
+
+
         return b;
         };
         friend const RealVariable operator / ( const RealVariable a , const RealVariable b );
         friend RealVariable operator + (int a , solver::RealVariable b );
-        friend RealVariable operator * ( const int a , solver::RealVariable& b );
+        friend RealVariable operator * ( const int a , solver::RealVariable b );
         friend RealVariable operator - ( int a , RealVariable b );
         friend RealVariable operator^(const RealVariable b,int a );
         friend RealVariable operator / ( int a , const RealVariable b );
